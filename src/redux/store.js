@@ -14,4 +14,5 @@ import { bookingsReducer } from './reducers/bookingsReducer';
 
 export default store;
 
-export const server = 'http://localhost:5000/api'; // Server URL
+// export const server = 'http://localhost:5000/api'; // Server URL
+export const server = 'https://urbanrentals-server.onrender.com/api'; // Server URL
