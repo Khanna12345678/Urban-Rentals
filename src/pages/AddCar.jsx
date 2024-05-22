@@ -4,18 +4,20 @@ import { Col, Form, Input, Row } from 'antd'
 import { useDispatch, useSelector } from 'react-redux';
 import { addCar } from '../redux/actions/carsAction';
 import Spinner from '../components/Spinner';
+import { useNavigate } from 'react-router-dom';
 
 const AddCar = () => {
 
 
     const {loading} = useSelector(state=>state.alerts);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const onFinish = (values) => {
         console.log(values);
         values.bookedTimeSlots=[];
         values.fuel="hawa";
-        dispatch(addCar(values));
+        dispatch(addCar(values , navigate));
     }
 
 

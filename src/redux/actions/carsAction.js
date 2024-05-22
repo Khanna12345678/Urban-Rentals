@@ -1,7 +1,7 @@
 import axios from 'axios';
 import {server} from '../store';
 import { message } from 'antd';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
 
 
@@ -21,7 +21,7 @@ export const getAllCars = ()=> async (dispatch)=>{
 
 
 
-export const addCar = (reqObj)=> async (dispatch)=>{
+export const addCar = (reqObj , navigate)=> async (dispatch)=>{
     dispatch({type : 'LOADING' , payload : true});
     
     try {
@@ -35,7 +35,7 @@ export const addCar = (reqObj)=> async (dispatch)=>{
         // console.log(response.data);
         dispatch({type : 'LOADING' , payload : false})
         message.success('Car Added Successfully');
-        const navigate = useNavigate();
+        // const navigate = useNavigate();
         setTimeout(()=>{
             // window.location.href = '/admin';
             navigate('/admin');
@@ -48,7 +48,7 @@ export const addCar = (reqObj)=> async (dispatch)=>{
 
 
 
-export const editCar = (reqObj)=> async (dispatch)=>{
+export const editCar = (reqObj , navigate)=> async (dispatch)=>{
     dispatch({type : 'LOADING' , payload : true});
     
     try {
@@ -62,7 +62,7 @@ export const editCar = (reqObj)=> async (dispatch)=>{
         // console.log(response.data);
         dispatch({type : 'LOADING' , payload : false})
         message.success('Car Details Updated Successfully');
-        const navigate = useNavigate();
+        // const navigate = useNavigate();
         setTimeout(()=>{
             // window.location.href = '/admin';
             navigate('/admin');
@@ -75,7 +75,7 @@ export const editCar = (reqObj)=> async (dispatch)=>{
 
 
 
-export const deleteCar = (reqObj)=> async (dispatch)=>{
+export const deleteCar = (reqObj , navigate)=> async (dispatch)=>{
     dispatch({type : 'LOADING' , payload : true});
     
     try {
@@ -89,10 +89,10 @@ export const deleteCar = (reqObj)=> async (dispatch)=>{
         // console.log(response.data);
         dispatch({type : 'LOADING' , payload : false})
         message.success('Car Deleted Successfully');
-        const navigate = useNavigate();
+        // const navigate = useNavigate();
         setTimeout(()=>{
             // window.location.reload();
-            navigate('/admin');
+            navigate('/');
 
         },500);
     } catch (error) {

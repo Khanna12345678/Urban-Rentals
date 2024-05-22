@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import DefaultLayout from '../components/DefaultLayout'
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllCars } from '../redux/actions/carsAction';
-import { useParams } from 'react-router-dom';
+import { useParams , useNavigate } from 'react-router-dom';
 import Spinner from '../components/Spinner';
 import { Row, Col, Divider , DatePicker, Checkbox , Modal } from 'antd';
 import dayjs from 'dayjs'
@@ -29,6 +29,7 @@ const BookingCar = () => {
   const [driver , setDriver] = useState(false);
   const [totalAmount , setTotalAmount] = useState(0);
   const [showModal , setShowModal] = useState(false);
+  const navigate = useNavigate();
 
   console.log(showModal);
 
@@ -72,7 +73,7 @@ const BookingCar = () => {
         to
       }
     }
-    dispatch(bookCar(reqObj));
+    dispatch(bookCar(reqObj , navigate));
   }
 
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import {Row , Col , Form , Input , message} from 'antd'
-import {Link} from 'react-router-dom'
+import {Link , useNavigate} from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 import { userRegister } from '../redux/actions/userActions';
 import Spinner from '../components/Spinner';
@@ -12,13 +12,14 @@ AOS.init();
 const Register = () => {
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const {loading} = useSelector(state => state.alerts);
 
   function onFinish(values){
     if(values.password !== values.ConfirmPassword){
       return message.error('Password and Confirm Password should be same');
     }
-    dispatch(userRegister(values));
+    dispatch(userRegister(values , navigate));
     // console.log(values);
   }
 

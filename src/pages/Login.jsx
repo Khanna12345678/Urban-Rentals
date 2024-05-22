@@ -1,6 +1,6 @@
 import React from 'react'
 import {Row , Col , Form , Input} from 'antd'
-import {Link} from 'react-router-dom'
+import {Link , useNavigate} from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 import { userLogin } from '../redux/actions/userActions';
 import Spinner from '../components/Spinner';
@@ -12,10 +12,11 @@ AOS.init();
 const Login = () => {
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const {loading} = useSelector(state => state.alerts);
 
   function onFinish(values){
-    dispatch(userLogin(values));
+    dispatch(userLogin(values , navigate));
     console.log(values);
   }
 

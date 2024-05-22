@@ -5,7 +5,7 @@ import { deleteCar, getAllCars } from '../redux/actions/carsAction';
 import {  Row, Col } from 'antd';
 import Spinner from '../components/Spinner';
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
-import { Link } from 'react-router-dom';
+import { Link , useNavigate } from 'react-router-dom';
 import {Popconfirm } from 'antd';
 
 const AdminHome = () => {
@@ -13,6 +13,7 @@ const AdminHome = () => {
   const { loading } = useSelector(state => state.alerts);
   const [totalCars, setTotalCars] = useState([]);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   
   // console.log(loading);
@@ -65,7 +66,7 @@ const AdminHome = () => {
                               <div className='mr-4'>
                                 <Link to={`/editcar/${car._id}`}><EditOutlined className='mr-3' style={{fontSize: '20px', color: 'blue' , cursor: 'pointer'}} /></Link>
 
-                                <Popconfirm title='Are you sure want to delete this car ?' onConfirm={()=>{dispatch(deleteCar({carid: car._id}))}} okText='Yes' cancelText='No'>
+                                <Popconfirm title='Are you sure want to delete this car ?' onConfirm={()=>{dispatch(deleteCar({carid: car._id} , navigate))}} okText='Yes' cancelText='No'>
                                   <DeleteOutlined style={{fontSize: '20px', color: 'red' , cursor: 'pointer'}} />
                                 </Popconfirm>
 
