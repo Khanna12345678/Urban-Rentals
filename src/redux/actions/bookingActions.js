@@ -1,6 +1,7 @@
 import axios from 'axios';
 import {server} from '../store';
 import {message} from 'antd';
+import { useNavigate } from 'react-router-dom';
 
 export const bookCar = (reqObj) => async (dispatch)=>{
     dispatch({type : 'LOADING' , payload : true});
@@ -14,8 +15,10 @@ export const bookCar = (reqObj) => async (dispatch)=>{
         });
         dispatch({type : 'LOADING' , payload : false});
         message.success('Car Booked Successfully');
+        const navigate = useNavigate();
         setTimeout(()=>{
-            window.location.href = '/userbookings';
+            // window.location.href = '/userbookings';
+            navigate('/userbookings');
         },500);
 
     } catch (error) {

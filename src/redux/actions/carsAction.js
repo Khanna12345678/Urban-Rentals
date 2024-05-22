@@ -1,6 +1,9 @@
 import axios from 'axios';
 import {server} from '../store';
 import { message } from 'antd';
+import { useNavigate } from 'react-router-dom';
+
+
 
 export const getAllCars = ()=> async (dispatch)=>{
     dispatch({type : 'LOADING' , payload : true});
@@ -32,8 +35,10 @@ export const addCar = (reqObj)=> async (dispatch)=>{
         // console.log(response.data);
         dispatch({type : 'LOADING' , payload : false})
         message.success('Car Added Successfully');
+        const navigate = useNavigate();
         setTimeout(()=>{
-            window.location.href = '/admin';
+            // window.location.href = '/admin';
+            navigate('/admin');
         },500);
     } catch (error) {
         console.log(error);
@@ -57,8 +62,10 @@ export const editCar = (reqObj)=> async (dispatch)=>{
         // console.log(response.data);
         dispatch({type : 'LOADING' , payload : false})
         message.success('Car Details Updated Successfully');
+        const navigate = useNavigate();
         setTimeout(()=>{
-            window.location.href = '/admin';
+            // window.location.href = '/admin';
+            navigate('/admin');
         },500);
     } catch (error) {
         console.log(error);
@@ -82,8 +89,11 @@ export const deleteCar = (reqObj)=> async (dispatch)=>{
         // console.log(response.data);
         dispatch({type : 'LOADING' , payload : false})
         message.success('Car Deleted Successfully');
+        const navigate = useNavigate();
         setTimeout(()=>{
-            window.location.reload();
+            // window.location.reload();
+            navigate('/admin');
+
         },500);
     } catch (error) {
         console.log(error);

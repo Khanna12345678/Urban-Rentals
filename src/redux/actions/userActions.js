@@ -1,6 +1,7 @@
 import axios from "axios";
 import {message} from 'antd'
 import {server} from '../store';
+import { useNavigate } from "react-router-dom";
 
 export const userLogin = (reqObj) => async (dispatch) => {
     dispatch({ type: "LOADING", payload: true });
@@ -12,12 +13,14 @@ export const userLogin = (reqObj) => async (dispatch) => {
             },
             // withCredentials: true,
         });
-        console.log(response.data);
+        // console.log(response.data);
         localStorage.setItem("user", JSON.stringify(response.data));
         message.success("Login Successfull")
         dispatch({ type: "LOADING", payload: false });
+        const navigate = useNavigate();
         setTimeout(() => {
-            window.location.href='/'
+            // window.location.href='/'
+            navigate('/');
          
         }, 500);
     } catch (error) {
@@ -44,8 +47,10 @@ export const userRegister = (reqObj) => async (dispatch) => {
         console.log(response.data);
         message.success("Registartion Successfull")
         dispatch({ type: "LOADING", payload: false });
+        const navigate = useNavigate();
         setTimeout(() => {
-            window.location.href='/login'
+            // window.location.href='/login'
+            navigate('/login');
          
         }, 500);
     } catch (error) {
