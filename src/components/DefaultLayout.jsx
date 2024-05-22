@@ -35,16 +35,16 @@ const DefaultLayout = (props) => {
     {
       key: '4',
       label: (
-        <a onClick={()=>{
+        <button  onClick={()=>{
           localStorage.removeItem('user')
           message.success('Logout Successfull');
           setTimeout(() => {
             window.location.href='/login'
          
         }, 500);
-        }}>
+        }}  style={{color: 'orangered' , border: 'none' , display: 'flex'}}>
           Logout
-        </a>
+        </button>
       ),
     },
   ];
