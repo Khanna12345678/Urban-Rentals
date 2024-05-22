@@ -39,7 +39,7 @@ const BookingCar = () => {
     else{
       setCar(cars.find(car=>car._id===carid));
     }
-  }, [cars]);
+  }, [cars , carid , dispatch]);
 
   useEffect(() => {
     if(totalHours>0){
@@ -49,7 +49,7 @@ const BookingCar = () => {
       }
       setTotalAmount(amount);
     }
-  }, [totalHours, driver]);
+  }, [totalHours, driver , car.rentPerHour]);
 
 
 

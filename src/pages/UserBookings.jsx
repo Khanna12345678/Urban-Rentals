@@ -12,7 +12,7 @@ function UserBookings() {
   const user = JSON.parse(localStorage.getItem("user"));
   useEffect(() => {
     dispatch(getAllBookings());
-  }, []);
+  }, [dispatch]);
 
   return (
     <DefaultLayout>

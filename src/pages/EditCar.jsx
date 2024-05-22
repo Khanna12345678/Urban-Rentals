@@ -23,7 +23,7 @@ const EditCar = () => {
             setTotalCars(cars);
             setCar(cars.find((car)=>car._id===carid));
         }
-    }, [cars]);
+    }, [cars , carid , dispatch]);
 
     const onFinish = (values) => {
         values._id = car._id;

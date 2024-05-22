@@ -6,7 +6,7 @@ import {  Row, Col } from 'antd';
 import Spinner from '../components/Spinner';
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import { Link } from 'react-router-dom';
-import {Popconfirm , message} from 'antd';
+import {Popconfirm } from 'antd';
 
 const AdminHome = () => {
   const { cars } = useSelector(state => state.cars);
