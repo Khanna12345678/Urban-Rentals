@@ -2,16 +2,22 @@ import React from 'react'
 import { Dropdown, Button , Row , Col , message } from "antd"
 import { Link } from 'react-router-dom';
 import { AiFillLinkedin, AiFillGithub } from "react-icons/ai";
+import { useNavigate } from 'react-router-dom';
 
 const DefaultLayout = (props) => {
 
   const user = JSON.parse(localStorage.getItem('user'));
+  const navigate = useNavigate();
+
+  // const homeRe = () => {
+  //   navigate('/');
+  // }
 
   const items = [
     {
       key: '1',
       label: (
-        <button onClick={()=>{<Link to='/'></Link>}} style={{color: 'orangered' , border: 'none' , display: 'flex'}}>
+        <button onClick={()=>{navigate('/')}} style={{color: 'orangered' , border: 'none' , display: 'flex'}}>
           Home
         </button>
       ),
@@ -19,17 +25,17 @@ const DefaultLayout = (props) => {
     {
       key: '2',
       label: (
-        <a href="/userbookings">
+        <button onClick={()=>{navigate('/userbookings')}} style={{color: 'orangered' , border: 'none' , display: 'flex'}}>
           Bookings
-        </a>
+        </button>
       ),
     },
     user.role==='admin' && {
       key: '3',
       label: (
-        <a href="/admin">
+        <button onClick={()=>{navigate('/admin')}} style={{color: 'orangered' , border: 'none' , display: 'flex'}}>
           Admin
-        </a>
+        </button>
       ),
     },
     {
@@ -39,7 +45,8 @@ const DefaultLayout = (props) => {
           localStorage.removeItem('user')
           message.success('Logout Successfull');
           setTimeout(() => {
-            window.location.href='/login'
+            // window.location.href='/login'
+            navigate('/login');
          
         }, 500);
         }}  style={{color: 'orangered' , border: 'none' , display: 'flex'}}>
