@@ -11,9 +11,9 @@ const DefaultLayout = (props) => {
     {
       key: '1',
       label: (
-        <a href="/">
+        <button onClick={()=>{<Link to='/'></Link>}} style={{color: 'orangered' , border: 'none' , display: 'flex'}}>
           Home
-        </a>
+        </button>
       ),
     },
     {
